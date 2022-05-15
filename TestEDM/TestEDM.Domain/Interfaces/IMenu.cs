@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TestEDM.Domain.Entities;
 
-namespace TestEDM.Interfaces
+namespace TestEDM.Domain.Interfaces
 {
-    public interface ISacarNotas
+    public interface IMenu
     {
-        public Notas Saque(int valor);
+        public void MenuCaixa();
     }
 }

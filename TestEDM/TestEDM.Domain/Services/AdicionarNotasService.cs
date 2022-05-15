@@ -2,7 +2,7 @@
 
 namespace TestEDM.Domain.Services
 {
-    public class AdicionarNotasService: IAdcionarNotas
+    public class AdicionarNotasService: IAdicionarNotas
     {
         
     }

@@ -1,6 +1,9 @@
-﻿namespace TestEDM.Domain.Interfaces
+﻿using TestEDM.Domain.Entities;
+
+namespace TestEDM.Domain.Interfaces
 {
     public interface INotasRepository
     {
+        public Notas NotasDisponiveis ();
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace TestEDM.Domain.Interfaces
 {
-    public interface IAdcionarNotas
+    public interface IAdicionarNotas
     {
     }
 }
