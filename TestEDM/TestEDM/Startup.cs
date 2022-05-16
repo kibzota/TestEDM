@@ -28,7 +28,6 @@ namespace TestEDM
             services.AddSingleton<IConfigurationRoot>(Configuration);
             EntityFrameworkConfiguration.ConfigureService(services, Configuration);
             IocContainerConfiguration.ConfigureService(services, Configuration);
-            //AutoMapperConfiguration.ConfigureService(services, Configuration);
             Config.Load(Configuration);
 
         }

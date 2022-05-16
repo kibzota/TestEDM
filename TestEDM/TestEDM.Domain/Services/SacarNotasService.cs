@@ -23,7 +23,7 @@ namespace TestEDM.Domain.Services
 
             var notasNoCaixa = _notasRepository.NotasDisponiveis();
             var notasExtraidas = new Notas();
-            var saldoSuficiente = notasNoCaixa != null && CalculaValorTotalCaixa(notasNoCaixa) >= valorRequerido;
+            var saldoSuficiente = notasNoCaixa != null && CalculaValorTotalCaixa(notasNoCaixa) >= valorRequerido && valorRequerido>0;
 
             if (saldoSuficiente)
             {

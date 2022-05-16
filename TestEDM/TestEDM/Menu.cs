@@ -37,6 +37,8 @@ namespace TestEDM
                     case 2:
                         DepositoMenu();
                         break;
+                    case 3:
+                        break;
                     default:
                         Console.WriteLine("Opção invalida, tente novamente!");
                         break;
