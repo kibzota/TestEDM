@@ -9,9 +9,9 @@ namespace TestEDM.Domain.Entities
 {
     public class Notas : EntityBase
     {
-        public int NotasDeDez { get; private set; }
-        public int NotasDeVinte { get; private set; }
-        public int NotasDeCinquenta { get; private set; }
-        public int NotasDeCem { get; private set; }
+        public int NotasDeDez { get;  set; }
+        public int NotasDeVinte { get;  set; }
+        public int NotasDeCinquenta { get;  set; }
+        public int NotasDeCem { get;  set; }
     }
 }

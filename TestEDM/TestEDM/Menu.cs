@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TestEDM.Domain.Interfaces;
 using TestEDM.Interfaces;
+using TestEDM.Shared.Exceptions;
 
 namespace TestEDM
 {
@@ -12,7 +13,7 @@ namespace TestEDM
     {
         private readonly ISacarNotas _sacarNotas;
         private readonly IAdicionarNotas _adicionarNotas;
-        public Menu(ISacarNotas sacarNotas, IAdicionarNotas adicionarNotas) 
+        public Menu(ISacarNotas sacarNotas, IAdicionarNotas adicionarNotas)
         {
             _sacarNotas = sacarNotas;
             _adicionarNotas = adicionarNotas;
@@ -50,14 +51,30 @@ namespace TestEDM
         }
         private void SaqueMenu()
         {
+            Console.Clear();
             var valor = 0;
             Console.WriteLine("Digite o valor para saque: ");
             int.TryParse(Console.ReadLine(), out valor);
-            _sacarNotas.Saque(valor);
+            try
+            {
+                var notasExtraidas = _sacarNotas.Saque(valor);
+                Console.WriteLine("Retirando:");
+                Console.WriteLine($"{notasExtraidas.NotasDeCem} notas de R$100");
+                Console.WriteLine($"{ notasExtraidas.NotasDeCinquenta} notas de R$150");
+                Console.WriteLine($"{ notasExtraidas.NotasDeVinte} notas de R$20");
+                Console.WriteLine($"{ notasExtraidas.NotasDeDez} notas de R$10");
+            }
+            catch (SaldoCaixaException)
+            {
+
+                Console.WriteLine("Notas insuficiente para realizar o saque"); ;
+            }
+            Console.WriteLine("Aperte enter para continuar...");
+
         }
 
-        private void AdicionarNotas() 
-        { 
+        private void AdicionarNotas()
+        {
         }
     }
 }

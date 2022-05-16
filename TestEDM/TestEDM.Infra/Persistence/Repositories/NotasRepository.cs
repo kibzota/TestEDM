@@ -23,5 +23,19 @@ namespace TestEDM.Infra.Persistence.Repositories
             _dbSet = context.Set<Notas>();
             _unitOfWork = unitOfWork;
         }
+        public Notas? NotasDisponiveis() 
+        {
+            var query = _dbSet.OrderBy(c=> c.DataAlteracao).LastOrDefault();
+
+            return query;
+        }
+        public void SalvarNotas(Notas notas)
+        {
+            notas.DataAlteracao = DateTime.Now;
+            _dbSet.Add(notas);
+            _context.SaveChanges();
+            
+        }
+
     }
 }
