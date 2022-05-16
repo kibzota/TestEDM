@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TestEDM.Domain.Interfaces;
 using TestEDM.Interfaces;
+using TestEDM.Shared.Enum;
 using TestEDM.Shared.Exceptions;
 
 namespace TestEDM
@@ -33,6 +34,9 @@ namespace TestEDM
                         SaqueMenu();
 
                         break;
+                    case 2:
+                        DepositoMenu();
+                        break;
                     default:
                         Console.WriteLine("Opção invalida, tente novamente!");
                         break;
@@ -60,9 +64,9 @@ namespace TestEDM
                 var notasExtraidas = _sacarNotas.Saque(valor);
                 Console.WriteLine("Retirando:");
                 Console.WriteLine($"{notasExtraidas.NotasDeCem} notas de R$100");
-                Console.WriteLine($"{ notasExtraidas.NotasDeCinquenta} notas de R$150");
-                Console.WriteLine($"{ notasExtraidas.NotasDeVinte} notas de R$20");
-                Console.WriteLine($"{ notasExtraidas.NotasDeDez} notas de R$10");
+                Console.WriteLine($"{notasExtraidas.NotasDeCinquenta} notas de R$50");
+                Console.WriteLine($"{notasExtraidas.NotasDeVinte} notas de R$20");
+                Console.WriteLine($"{notasExtraidas.NotasDeDez} notas de R$10");
             }
             catch (SaldoCaixaException)
             {
@@ -73,8 +77,49 @@ namespace TestEDM
 
         }
 
-        private void AdicionarNotas()
+        private void DepositoMenu()
         {
+            int opcao;
+            Console.Clear();
+            Console.WriteLine("Selecione a nota que deseja depositar:");
+            Console.WriteLine("1 - R$100 \n");
+            Console.WriteLine("2 - R$50 \n");
+            Console.WriteLine("3 - R$20 \n");
+            Console.WriteLine("4 - R$10 \n");
+            Console.WriteLine("5 - Sair \n");
+            int.TryParse(Console.ReadLine(), out opcao);
+            if(opcao != 5) AdicionarNotas(opcao);
+            Console.WriteLine("Aperte enter para continuar...");
+        }
+
+        private void AdicionarNotas(int opcao)
+        {
+            Console.Clear();
+            int quantidade;
+            Console.WriteLine("Insira a quantidade de notas:");
+            int.TryParse(Console.ReadLine(), out quantidade);
+
+
+            switch (opcao)
+            {
+                case 1:
+                    _adicionarNotas.Adicionar(quantidade, TipoNota.cem);
+                    break;
+                case 2:
+                    _adicionarNotas.Adicionar(quantidade, TipoNota.cinquenta);
+                    break;
+                case 3:
+                    _adicionarNotas.Adicionar(quantidade, TipoNota.vinte);
+                    break;
+                case 4:
+                    _adicionarNotas.Adicionar(quantidade, TipoNota.dez);
+                    break;
+                default:
+                    break;
+
+
+            }
+
         }
     }
 }

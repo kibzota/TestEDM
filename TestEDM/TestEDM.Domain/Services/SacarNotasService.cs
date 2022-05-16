@@ -81,7 +81,7 @@ namespace TestEDM.Domain.Services
         private int CalculaValorTotalCaixa(Notas notascaixa)
         {
             return (notascaixa.NotasDeCem * (int)TipoNota.cem) + (notascaixa.NotasDeCinquenta * (int)TipoNota.cinquenta)
-                    + (notascaixa.NotasDeVinte * (int)TipoNota.vinte) + (notascaixa.NotasDeVinte * (int)TipoNota.dez);
+                    + (notascaixa.NotasDeVinte * (int)TipoNota.vinte) + (notascaixa.NotasDeDez * (int)TipoNota.dez);
         }
     }
 
