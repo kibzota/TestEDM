@@ -42,7 +42,7 @@ namespace TestEDM.Domain.Services
 
 
                 var notas10 = CalculaQuantidadeNotas(valorRequerido, TipoNota.dez);
-                notasExtraidas.NotasDeDez = notasNoCaixa.NotasDeDez >= notas20 ? notas10 : notasNoCaixa.NotasDeDez;
+                notasExtraidas.NotasDeDez = notasNoCaixa.NotasDeDez >= notas10 ? notas10 : notasNoCaixa.NotasDeDez;
                 valorRequerido -= (notasExtraidas.NotasDeDez * (int)TipoNota.dez);
 
             }
